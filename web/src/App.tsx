@@ -4,6 +4,7 @@ import Sidebar from "./Pages/Sidebar";
 import Home from "./Pages/Home";
 import ResistBeerPage from "./Pages/ResistBeerPage";
 import "./App.scss"
+import Hoge from "./tests/Hoge.tsx";
 
 
 function App() {
@@ -24,7 +25,11 @@ function App() {
                 },
                 {
                     path: '/resist',
-                    element: <ResistBeerPage/>
+                    element: <ResistBeerPage />
+                },
+                {
+                    path: '/hoge',
+                    element: <Hoge />
                 }
             ]
         }

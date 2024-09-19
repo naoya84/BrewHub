@@ -8,5 +8,7 @@
     "types": [
       "vitest/globals"
     ],
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   }
 }
