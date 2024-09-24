@@ -5,6 +5,8 @@ import Home from "./Pages/Home";
 import ResistBeerPage from "./Pages/ResistBeerPage";
 import "./App.scss"
 import Hoge from "./tests/Hoge.tsx";
+import CraftBeerPage from "./Pages/CraftBeerPage.tsx";
+import CraftBeerDetailPage from "./Pages/CraftBeerDetailPage.tsx";
 
 
 function App() {
@@ -13,7 +15,7 @@ function App() {
             path: '/',
             element: (
                 <>
-                    <Header />
+                    <Header/>
                     <Sidebar/>
                     <Outlet/>
                 </>
@@ -25,17 +27,25 @@ function App() {
                 },
                 {
                     path: '/resist',
-                    element: <ResistBeerPage />
+                    element: <ResistBeerPage/>
+                },
+                {
+                    path: '/craftbeers',
+                    element: <CraftBeerPage/>
+                },
+                {
+                    path: '/craftbeers/:id',
+                    element: <CraftBeerDetailPage/>
                 },
                 {
                     path: '/hoge',
-                    element: <Hoge />
+                    element: <Hoge/>
                 }
             ]
         }
     ])
     return (
-        <RouterProvider router={router} />
+        <RouterProvider router={router}/>
     )
 }
 

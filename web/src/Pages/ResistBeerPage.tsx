@@ -1,13 +1,14 @@
 import {ChangeEventHandler, FormEventHandler, useEffect, useState} from "react";
 import countryData from '../utils/country.json';
-import {ResistBeerRepository, ResistBeerRepositoryImpl} from "../Repositories/ResistBeerRepository.ts";
+import {buildResistBeerContent, ResistBeerContentType} from "../models/Beer.ts";
+import {BeerRepository, BeerRepositoryImpl} from "../Repositories/BeerRepository.ts";
 
 interface Props {
-    resistBeerRepository?: ResistBeerRepository
+    beerRepository?: BeerRepository
 }
 
 export default function ResistBeerPage(
-    {resistBeerRepository = new ResistBeerRepositoryImpl()}: Props
+    {beerRepository = new BeerRepositoryImpl()}: Props
 ) {
     const [formContents, setFormContents] = useState<ResistBeerContentType>(buildResistBeerContent)
     const [imageFile, setImageFile] = useState<File | null>(null)
@@ -15,7 +16,7 @@ export default function ResistBeerPage(
 
     const submitHandler: FormEventHandler<HTMLFormElement> = (event) => {
         event.preventDefault()
-        resistBeerRepository.post(formContents, imageFile)
+        beerRepository.post(formContents, imageFile)
     }
 
     const handleFormChange: ChangeEventHandler<HTMLSelectElement | HTMLInputElement | HTMLTextAreaElement> = (e) => {
@@ -144,31 +145,4 @@ export default function ResistBeerPage(
             </form>
         </div>
     )
-}
-
-
-export type ResistBeerContentType = {
-    name: string
-    comment: string
-    store: string
-    abv: number
-    bitter: number
-    deeply: number
-    style: string
-    country: string
-    price: string
-}
-
-export const buildResistBeerContent = (): ResistBeerContentType => {
-    return {
-        name: '',
-        comment: '',
-        store: '',
-        abv: 5.0,
-        bitter: 5,
-        deeply: 5,
-        style: '',
-        country: '',
-        price: '',
-    }
 }

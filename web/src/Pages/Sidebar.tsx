@@ -9,13 +9,19 @@ export default function Sidebar() {
                 <li>
                     <p onClick={() => {
                         navigate('/')
-                    }}>Homeへ
+                    }}>Home
                     </p>
                 </li>
                 <li>
                     <p onClick={() => {
                         navigate('/resist')
-                    }}>登録ページへ
+                    }}>ビールを登録
+                    </p>
+                </li>
+                <li>
+                    <p onClick={() => {
+                        navigate('/craftbeers')
+                    }}>ビール図鑑を見る
                     </p>
                 </li>
             </ul>

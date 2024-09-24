@@ -1,5 +1,0 @@
-describe('network', () => {
-    it('should ', () => {
-
-    });
-});
