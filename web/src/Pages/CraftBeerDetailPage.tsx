@@ -16,7 +16,7 @@ export default function CraftBeerDetailPage(
     const [beer, setBeer] = useState<GetBeerType | null>(null)
 
     useEffect(() => {
-        beerRepository.getById(`http://localhost:8080/${id}`)
+        beerRepository.getById(`http://localhost:8080/api/beer/${id}`)
             .then((res) => {
                 setBeer(res[0])
             })

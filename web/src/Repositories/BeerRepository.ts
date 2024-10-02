@@ -2,9 +2,9 @@ import NetworkHttp, {Http} from "../Https/NetworkHttp.ts";
 import {GetBeerType, ResistBeerContentType} from "../models/Beer.ts";
 
 export interface BeerRepository {
-    post(url: string, formContent: ResistBeerContentType, imageFile: File | null): Promise<string>
-    get(url: string): Promise<Array<GetBeerType>>
-    getById(url: string): Promise<Array<GetBeerType>>
+    post(formContent: ResistBeerContentType, imageFile: File | null): Promise<string>
+    get(): Promise<Array<GetBeerType>>
+    getById(): Promise<Array<GetBeerType>>
 }
 
 export class BeerRepositoryImpl implements BeerRepository {
@@ -14,16 +14,22 @@ export class BeerRepositoryImpl implements BeerRepository {
         this.http = http
     }
 
-    post(url: string, formContent: ResistBeerContentType, imageFile: File | null): Promise<string> {
-        this.http.post(url, formContent, imageFile)
+    post(formContent: ResistBeerContentType, imageFile: File | null): Promise<string> {
+        const formData = new FormData()
+        formData.append("form", JSON.stringify(formContent))
+        if (imageFile !== null) {
+            formData.append("image", imageFile)
+        }
+
+        this.http.post("api/beer", formData)
         return Promise.resolve("")
     }
 
-    get(url: string): Promise<Array<GetBeerType>> {
-        return this.http.get(url)
+    get(): Promise<Array<GetBeerType>> {
+        return this.http.get("api/beer")
     }
 
-    getById(url: string): Promise<Array<GetBeerType>> {
-        return this.http.get(url)
+    getById(): Promise<Array<GetBeerType>> {
+        return this.http.get("api/beer")
     }
 }
