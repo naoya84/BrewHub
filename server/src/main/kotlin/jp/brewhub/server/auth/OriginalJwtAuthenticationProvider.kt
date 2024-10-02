@@ -1,7 +1,7 @@
-package com.security.server.auth
+package jp.brewhub.server.auth
 
-import com.security.server.auth.authentication.OriginalJwtAuthentication
-import com.security.server.auth.coder.OriginalJwtDecoder
+import jp.brewhub.server.auth.authentication.OriginalJwtAuthentication
+import jp.brewhub.server.auth.corder.OriginalJwtDecoder
 import org.springframework.security.authentication.AuthenticationProvider
 import org.springframework.security.authentication.BadCredentialsException
 import org.springframework.security.core.Authentication

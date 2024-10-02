@@ -1,0 +1,37 @@
+app:
+  jwt:
+    secret: "t6PdFmBbia3rZVk9ecbHTufjtwnb95JW"
+    expiration-time: 3600
+    issuer: "https://hoge.com"
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: "https://www.googleapis.com/oauth2/v3/certs"
+          issuer-uri: "https://accounts.google.com"
+      client:
+        registration:
+          google:
+            client-id: "3613108876-n37c42ona7qh5v51vi8bg92gqrjpeqqq.apps.googleusercontent.com"
+            client-secret: "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"
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL
+    username: sa
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: true
+  logging:
+    level:
+      root: INFO
+      org:
+        springframework:
+          security: DEBUG
+      jp:
+        brewhub:
+         server: DEBUG

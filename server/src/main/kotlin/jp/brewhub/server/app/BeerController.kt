@@ -1,4 +1,4 @@
-package jp.brewhub.server
+package jp.brewhub.server.app
 
 import jakarta.persistence.Id
 import org.springframework.web.bind.annotation.GetMapping
