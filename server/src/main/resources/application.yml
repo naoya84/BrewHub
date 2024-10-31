@@ -13,8 +13,8 @@ spring:
       client:
         registration:
           google:
-            client-id: "3613108876-n37c42ona7qh5v51vi8bg92gqrjpeqqq.apps.googleusercontent.com"
-            client-secret: "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"
+            client-id: ${CLIENT_ID}
+            client-secret: ${CLIENT_SECRET}
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:testdb;MODE=PostgreSQL
