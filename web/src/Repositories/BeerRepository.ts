@@ -1,10 +1,9 @@
 import NetworkHttp, {Http} from "../Https/NetworkHttp.ts";
-import {GetBeerType, ResistBeerContentType} from "../models/Beer.ts";
+import {GetBeerContentType, ResistBeerContentType} from "../models/Beer.ts";
 
 export interface BeerRepository {
-    post(formContent: ResistBeerContentType, imageFile: File | null): Promise<string>
-    get(): Promise<Array<GetBeerType>>
-    getById(): Promise<Array<GetBeerType>>
+    post(formContent: ResistBeerContentType, imageFile: File): Promise<string>
+    get(): Promise<Array<GetBeerContentType>>
 }
 
 export class BeerRepositoryImpl implements BeerRepository {
@@ -14,22 +13,20 @@ export class BeerRepositoryImpl implements BeerRepository {
         this.http = http
     }
 
-    post(formContent: ResistBeerContentType, imageFile: File | null): Promise<string> {
+    post(formContent: ResistBeerContentType, imageFile: File): Promise<string> {
         const formData = new FormData()
-        formData.append("form", JSON.stringify(formContent))
-        if (imageFile !== null) {
-            formData.append("image", imageFile)
-        }
-
-        this.http.post("api/beer", formData)
-        return Promise.resolve("")
+        formData.append("name", formContent.name)
+        formData.append("manufacturer", formContent.manufacturer)
+        formData.append("abv", formContent.abv.toString())
+        formData.append("ibu", formContent.ibu.toString())
+        formData.append("review", formContent.review.toString())
+        formData.append("comment", formContent.comment)
+        console.log(imageFile)
+        // formData.append("image", imageFile)
+        return this.http.post("api/beer", formData)
     }
 
-    get(): Promise<Array<GetBeerType>> {
-        return this.http.get("api/beer")
-    }
-
-    getById(): Promise<Array<GetBeerType>> {
+    get(): Promise<Array<GetBeerContentType>> {
         return this.http.get("api/beer")
     }
 }

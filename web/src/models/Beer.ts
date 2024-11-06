@@ -1,39 +1,30 @@
 export type ResistBeerContentType = {
     name: string
-    comment: string
-    store: string
+    manufacturer: string
     abv: number
-    bitter: number
-    deeply: number
-    style: string
-    country: string
-    price: string
+    ibu: number
+    review: number
+    comment: string
 }
 
 export const buildResistBeerContent = (): ResistBeerContentType => {
     return {
         name: '',
-        comment: '',
-        store: '',
-        abv: 5.0,
-        bitter: 5,
-        deeply: 5,
-        style: '',
-        country: '',
-        price: '',
+        manufacturer: '',
+        abv: 5,
+        ibu: 5,
+        review: 0,
+        comment: ''
     }
 }
 
-export type GetBeerType = {
+export type GetBeerContentType = {
     id: number
     name: string
-    comment: string
-    store: string
+    manufacturer: string
     abv: number
-    bitter: number
-    deeply: number
-    style: string
-    country: string
-    price: string
-    image: File
+    ibu: number
+    review: number
+    comment: string
+    // image: File
 }

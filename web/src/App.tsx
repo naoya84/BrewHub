@@ -1,10 +1,8 @@
 import {createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
 import Header from "./Pages/Header";
-import Sidebar from "./Pages/Sidebar";
+import Tabbar from "./Pages/Tabbar.tsx";
 import Home from "./Pages/Home";
 import ResistBeerPage from "./Pages/ResistBeerPage";
-import CraftBeerPage from "./Pages/CraftBeerPage.tsx";
-import CraftBeerDetailPage from "./Pages/CraftBeerDetailPage.tsx";
 import LoginPage from "./Pages/LoginPage.tsx";
 import UserProvider from "./Component/UserProvider.tsx";
 import UnAuthorized from "./Component/UnAuthorized.tsx";
@@ -20,9 +18,15 @@ function App() {
             path: '/',
             element: (
                 <>
-                    <Header />
-                    <Sidebar />
+                    <Authorized>
+                        <Header />
+                    </Authorized>
+                    
                     <Outlet />
+                    
+                    <Authorized>
+                        <Tabbar />
+                    </Authorized>
                 </>
             ),
             children: [
@@ -44,22 +48,6 @@ function App() {
                     element: (
                         <Authorized>
                             <ResistBeerPage/>
-                        </Authorized>
-                    )
-                },
-                {
-                    path: '/craftbeers',
-                    element: (
-                        <Authorized>
-                            <CraftBeerPage/>
-                        </Authorized>
-                    )
-                },
-                {
-                    path: '/craftbeers/:id',
-                    element: (
-                        <Authorized>
-                            <CraftBeerDetailPage/>
                         </Authorized>
                     )
                 },

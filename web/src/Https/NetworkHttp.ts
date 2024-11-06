@@ -1,9 +1,9 @@
-import {GetBeerType} from "../models/Beer.ts";
+import {GetBeerContentType} from "../models/Beer.ts";
 import {useUser} from "../UserContext.ts";
 
 export interface Http {
     post(url: string, body: FormData): Promise<string>
-    get(url: string): Promise<Array<GetBeerType>>
+    get(url: string): Promise<Array<GetBeerContentType>>
 }
 
 export default class NetworkHttp implements Http {
@@ -13,19 +13,19 @@ export default class NetworkHttp implements Http {
         const accessToken = this.user?.accessToken
         const response = await fetch(url, {
             method: "POST",
-            headers: {"Content-Type": "application/json", "Authorization": `Bearer ${accessToken}`},
+            headers: {"Authorization": `Bearer ${accessToken}`},
             body: body
         })
 
-        return await response.json() as Promise<string>
+        return await response.text()
     }
 
-    async get(url: string): Promise<Array<GetBeerType>> {
+    async get(url: string): Promise<Array<GetBeerContentType>> {
         const accessToken = this.user?.accessToken
         const response = await fetch(url, {
             method: "GET",
-            headers: {"Content-Type": "application/json", "Authorization": `Bearer ${accessToken}`},
+            headers: {"Authorization": `Bearer ${accessToken}`},
         })
-        return await response.json() as Promise<Array<GetBeerType>>
+        return await response.json() as Promise<Array<GetBeerContentType>>
     }
 }

@@ -1,0 +1,29 @@
+.login-container {
+  background-color: #864A2B;
+  min-height: 100vh;
+  margin-top: -5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  .login-title {
+    color: white;
+    text-align: center;
+    font-size: 4rem;
+    font-weight: bold;
+    position: absolute;
+  }
+
+  .login-button {
+    border-radius: 2rem;
+    text-align: center;
+    padding: 0.6rem 2rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    margin-top: 17vh;
+  }
+}
