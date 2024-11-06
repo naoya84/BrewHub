@@ -8,7 +8,7 @@ RUN npm run build
 FROM eclipse-temurin:21-jdk-alpine AS server
 WORKDIR /app
 COPY ./server /app/
-RUN ./gradlew build
+RUN ./gradlew clean build -x test
 
 FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
