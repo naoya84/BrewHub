@@ -8,6 +8,8 @@ spring:
     static-locations: classpath:/static/
   security:
     oauth2:
+      login:
+        success-url: ${OAUTH2_LOGIN_SUCCESS_URL}
       resourceserver:
         jwt:
           jwk-set-uri: "https://www.googleapis.com/oauth2/v3/certs"
@@ -18,10 +20,10 @@ spring:
             client-id: ${CLIENT_ID}
             client-secret: ${CLIENT_SECRET}
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:testdb;MODE=PostgreSQL
-    username: sa
-    password: password
+    driver-class-name: ${DB_NAME}
+    url: ${DB_URL}
+    username: ${DB_USER_NAME}
+    password: ${DB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update

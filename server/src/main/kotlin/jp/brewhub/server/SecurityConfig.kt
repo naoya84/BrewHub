@@ -6,6 +6,7 @@ import jp.brewhub.server.auth.OriginalJwtAuthenticationProvider
 import jp.brewhub.server.auth.corder.OriginalJwtDecoder
 import jp.brewhub.server.auth.filter.AuthenticationConvertFilter
 import jp.brewhub.server.auth.filter.OriginalJwtAuthenticationFilter
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.authentication.AuthenticationManager
@@ -21,6 +22,9 @@ import org.springframework.security.web.authentication.AnonymousAuthenticationFi
 @Configuration
 @EnableWebSecurity
 class SecurityConfig {
+    @Value("\${spring.security.oauth2.login.success-url}")
+    lateinit var loginSuccessUrl: String
+
     @Bean
     fun authSecurityFilterChain(http: HttpSecurity): SecurityFilterChain {
         http
@@ -40,14 +44,14 @@ class SecurityConfig {
                 it.requestMatchers("/h2-console/**", "/logout").permitAll()
             }
             .oauth2Login {
-                it.defaultSuccessUrl("http://localhost:5173", true)
+                it.defaultSuccessUrl(loginSuccessUrl, true)
             }
             .oauth2ResourceServer { it.jwt{} }
             .exceptionHandling {
                 it.authenticationEntryPoint(CustomAuthenticationEntryPoint())
             }
             .logout {
-                it.logoutSuccessUrl("http://localhost:5173")
+                it.logoutSuccessUrl(loginSuccessUrl)
             }
             .addFilterBefore(
                 AuthenticationConvertFilter(),
