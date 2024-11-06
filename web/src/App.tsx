@@ -9,7 +9,6 @@ import UnAuthorized from "./Component/UnAuthorized.tsx";
 import Authorized from "./Component/Authorized.tsx";
 import {DefaultAuthRepository} from "./Repositories/AuthRepository.ts";
 import "./App.scss"
-import Hoge from "./tests/Hoge.tsx";
 
 function App() {
     const authRepository = new DefaultAuthRepository()
@@ -50,10 +49,6 @@ function App() {
                             <ResistBeerPage/>
                         </Authorized>
                     )
-                },
-                {
-                    path: '/hoge',
-                    element: <Hoge />
                 }
             ]
         }
