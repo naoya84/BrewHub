@@ -1,10 +1,13 @@
+import { a } from "vitest/dist/chunks/suite.CcK46U-P.js";
 import "../assets/stylesheet/Header.scss"
 import { RiLogoutBoxLine } from "react-icons/ri";
 
 export default function Header() {
-    // const apiBaseUrl = process.env.REACT_APP_API_BASE_URL as string;
-    const apiBaseUrl = import.meta.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
-    console.log(apiBaseUrl)
+    const apiBaseUrl = import.meta.env.MODE == "development"
+        ? "http://localhost:8080"
+        : "https://brewhub-nblq.onrender.com";
+
+        console.log(apiBaseUrl)
 
     return (
         <nav>

@@ -1,0 +1,31 @@
+app:
+  jwt:
+    secret: "t6PdFmBbia3rZVk9ecbHTufjtwnb95JW"
+    expiration-time: 3600
+    issuer: "https://hoge.com"
+spring:
+  security:
+    oauth2:
+      login:
+        success-url: http://localhost:5173
+        jwt:
+          jwk-set-uri: "https://www.googleapis.com/oauth2/v3/certs"
+          issuer-uri: "https://accounts.google.com"
+      client:
+        registration:
+          google:
+            client-id: client-id
+            client-secret: client-secret
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL
+    username: sa
+    password: password
+  flyway:
+    enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  h2:
+    console:
+      enabled: true
