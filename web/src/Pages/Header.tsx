@@ -4,7 +4,7 @@ import { RiLogoutBoxLine } from "react-icons/ri";
 export default function Header() {
     const apiBaseUrl = import.meta.env.MODE == "development"
         ? "http://localhost:8080"
-        : "https://brewhub-nblq.onrender.com";
+        : "https://brew-hub-58d4d2270f21.herokuapp.com";
 
     return (
         <nav>
