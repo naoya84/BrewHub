@@ -3,6 +3,8 @@ app:
     secret: "t6PdFmBbia3rZVk9ecbHTufjtwnb95JW"
     expiration-time: 3600
     issuer: "https://hoge.com"
+server:
+  port: ${PORT:8080}
 spring:
   resources:
     static-locations: classpath:/static/
